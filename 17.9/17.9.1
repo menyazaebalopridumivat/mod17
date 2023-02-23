@@ -1,0 +1,27 @@
+def binary_search(arr, target):
+    left, right = 0, len(arr)-1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] < target:
+            left = mid + 1
+        elif arr[mid] > target:
+            right = mid - 1
+        else:
+            return mid
+    return left
+
+def sort_sequence(sequence):
+    lst = list(map(int, sequence.split()))
+    lst.sort()
+    return lst
+
+def find_position(lst, num):
+    idx = binary_search(lst, num)
+    return idx
+
+if __name__ == "__main__":
+    sequence = input("Введите последовательность чисел через пробел: ")
+    num = int(input("Введите любое число: "))
+    lst = sort_sequence(sequence)
+    idx = find_position(lst, num)
+    print(f"Позиция элемента, который меньше {num}, а следующий за ним больше или равен этому числу: {idx}")
